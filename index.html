@@ -5,54 +5,714 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#101820">
 <title>LE PLUS BON | Menu Digitale</title>
+
 <style>
-:root{--bg:#101820;--card:#192630;--orange:#ff6848;--lime:#d5ed79;--cream:#fff1d8;--white:#fffaf2;--muted:#aeb9bd;--line:#34434b}
-*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth;scroll-padding-top:90px}body{background:var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif;line-height:1.6}a{color:inherit;text-decoration:none}
-.top-line{height:5px;background:linear-gradient(90deg,var(--orange) 50%,var(--lime) 50%)}header{position:sticky;top:0;z-index:100;background:#101820ed;backdrop-filter:blur(15px);border-bottom:1px solid #ffffff20}.nav{max-width:1150px;margin:auto;padding:13px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{display:flex;align-items:center;gap:12px}.brand-symbol{width:48px;height:48px;display:grid;place-items:center;border-radius:13px;background:linear-gradient(145deg,var(--orange),#b84230);font-size:27px;box-shadow:0 5px 18px #ff684830}.brand-name{font-size:15px;font-weight:1000;letter-spacing:2px}.brand-sub{color:var(--muted);font-size:9px;letter-spacing:2px}.call-top{background:var(--lime);color:#172019;padding:11px 17px;border-radius:9px;font-size:11px;font-weight:900}
-.hero{padding:55px 22px 45px;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;width:450px;height:450px;right:-150px;top:-180px;background:radial-gradient(circle,#ff684830,transparent 70%)}.hero-inner{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr .9fr;align-items:center;gap:35px;position:relative;z-index:1}.kicker{color:var(--lime);font-size:11px;font-weight:bold;letter-spacing:4px;text-transform:uppercase}.kicker:before{content:"";display:inline-block;width:25px;height:2px;background:var(--orange);margin-right:10px;vertical-align:middle}h1{font-size:clamp(48px,8vw,88px);line-height:.96;letter-spacing:-4px;margin:20px 0;font-weight:1000}h1 span{color:var(--orange)}.hero-text{max-width:470px;color:#c2cbcc;font-size:15px}.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 18px;border-radius:10px;font-size:11px;font-weight:900;transition:.2s}.btn:hover{transform:translateY(-3px)}.btn-orange{background:var(--orange);color:#211713}.btn-outline{border:1px solid #ffffff45}
-/* Illustrazione originale: pizza disegnata in SVG, senza immagini esterne */
-.art-area{min-height:370px;display:grid;place-items:center;position:relative}.pizza-art{width:min(365px,88vw);filter:drop-shadow(0 25px 30px #0008);animation:float 5s ease-in-out infinite}.pizza-art svg{width:100%;display:block}@keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-9px) rotate(1deg)}}.art-tag{position:absolute;bottom:3%;right:0;background:var(--lime);color:#172019;padding:13px 18px;border-radius:12px;font-size:10px;font-weight:1000;letter-spacing:1px;transform:rotate(-5deg);box-shadow:0 8px 25px #0007}.art-tag span{display:block;text-align:center;font-size:17px}
-.container{max-width:1150px;margin:auto;padding:0 22px}.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:25px 0 60px}.info{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:17px;display:flex;align-items:center;gap:12px}.info-icon{font-size:24px}.info b{display:block;font-size:12px}.info small{color:var(--muted);font-size:10px}.menu-heading{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:23px}.eyebrow{color:var(--orange);font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase}.menu-heading h2{font-size:clamp(32px,5vw,48px);line-height:1.1;margin-top:8px;letter-spacing:-2px}.menu-heading h2 span{color:var(--orange)}.menu-heading p{max-width:280px;color:var(--muted);font-size:12px}.search-box{position:relative;margin:20px 0 15px}.search-box input{width:100%;padding:15px 17px 15px 45px;background:var(--card);color:white;border:1px solid var(--line);border-radius:11px;outline:none}.search-box input:focus{border-color:var(--orange)}.search-icon{position:absolute;left:16px;top:10px;font-size:20px}.tabs{display:flex;gap:9px;overflow-x:auto;padding:5px 0 15px;scrollbar-width:thin}.tab{flex-shrink:0;padding:10px 15px;border:1px solid var(--line);border-radius:9px;background:transparent;color:#c1cacc;font-size:11px;font-weight:900;cursor:pointer}.tab.active,.tab:hover{background:var(--lime);border-color:var(--lime);color:#172019}.category{padding:30px 0 10px;scroll-margin-top:100px}.category-title{display:flex;align-items:center;gap:13px;margin-bottom:18px}.category-icon{width:45px;height:45px;border-radius:12px;background:#ff684820;border:1px solid #ff684850;display:grid;place-items:center;font-size:22px}.category-title h3{font-size:23px}.category-title small{color:var(--muted);font-size:10px}.category-line{flex:1;height:1px;background:var(--line)}.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.product{background:linear-gradient(135deg,var(--card),#15212a);border:1px solid var(--line);border-radius:13px;padding:17px;transition:.2s}.product:hover{border-color:#ff684899;transform:translateY(-2px)}.product-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.product h4{font-size:13px;font-weight:900;letter-spacing:.3px}.price{color:var(--lime);font-size:14px;font-weight:1000;white-space:nowrap}.description{color:var(--muted);font-size:11px;margin-top:8px;line-height:1.6}.fixed-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}.fixed-card{background:linear-gradient(145deg,#293940,#17232d);border:1px solid #647079;border-radius:15px;padding:21px}.fixed-card h4{font-size:18px}.fixed-card .price{font-size:24px}.fixed-card p{color:#c0c9c9;font-size:12px;margin-top:12px;line-height:1.8}.notice{margin-top:14px;padding:13px 16px;background:#d5ed7910;border-left:3px solid var(--lime);border-radius:0 9px 9px 0;color:#c8d0c8;font-size:11px}.empty{display:none;text-align:center;padding:30px;color:var(--muted)}
-.contact{margin-top:65px;padding:35px;border-radius:18px;background:linear-gradient(120deg,#ff6848,#d94d39);color:#211713;position:relative;overflow:hidden}.contact:after{content:"✦";position:absolute;right:15px;top:-60px;font-size:200px;color:#ffffff20}.contact-inner{position:relative;z-index:1}.contact .eyebrow{color:#48251e}.contact h2{font-size:clamp(28px,5vw,43px);margin:8px 0}.contact p{max-width:530px;font-size:13px;margin-bottom:20px}.contact-buttons{display:flex;gap:10px;flex-wrap:wrap}.contact-btn{padding:13px 18px;background:var(--bg);color:white;border-radius:9px;font-size:12px;font-weight:900}.address{margin-top:19px;font-size:11px;font-weight:bold}footer{text-align:center;padding:30px 0 40px;color:#7e8c91;font-size:10px}footer b{color:#d3dbd9;letter-spacing:3px}.float-call{position:fixed;right:17px;bottom:17px;z-index:99;background:var(--lime);color:#172019;padding:14px 19px;border-radius:50px;font-size:12px;font-weight:1000;box-shadow:0 8px 30px #0008}
-@media(max-width:700px){.nav{padding:12px 14px}.brand-name{font-size:13px}.call-top{font-size:9px;padding:10px}.hero{padding:40px 15px 25px}.hero-inner{grid-template-columns:1fr;gap:5px}h1{font-size:58px;letter-spacing:-3px}.hero-text{font-size:13px}.art-area{min-height:310px;margin-top:10px}.pizza-art{width:275px}.container{padding:0 15px}.info-grid{grid-template-columns:1fr;gap:8px;margin-bottom:40px}.info{padding:13px}.menu-heading{display:block}.menu-heading p{margin-top:10px}.products,.fixed-grid{grid-template-columns:1fr}.category{padding-top:23px}.contact{padding:25px 19px}.float-call{right:12px;bottom:12px}}
+:root{
+ --bg:#101820;--card:#192630;--orange:#ff6848;--lime:#d5ed79;
+ --cream:#fff1d8;--white:#fffaf2;--muted:#aeb9bd;--line:#34434b;
+ --sand:#f1c99d;--red:#c92f4d;--blue:#1679bd;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:var(--bg);color:var(--white);font-family:Arial,Helvetica,sans-serif;line-height:1.6;padding-bottom:78px}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+.top-line{height:5px;background:linear-gradient(90deg,#c92f4d 0 33%,#f4c64e 33% 66%,var(--lime) 66%)}
+header{position:sticky;top:0;z-index:100;background:#101820ed;backdrop-filter:blur(15px);border-bottom:1px solid #ffffff20}
+.nav{max-width:1150px;margin:auto;padding:11px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}
+.brand-mark{width:52px;height:52px;flex:0 0 52px;border-radius:14px;overflow:hidden;background:linear-gradient(145deg,#f7d4a7,#e9a56f);display:grid;place-items:center;box-shadow:0 5px 16px #0004}
+.brand-mark svg{width:100%;height:100%}
+.brand-name{font-size:15px;font-weight:1000;letter-spacing:2px;line-height:1.2}
+.brand-sub{color:var(--muted);font-size:9px;letter-spacing:1.3px;margin-top:4px}
+.call-top{background:var(--lime);color:#172019;padding:11px 17px;border-radius:9px;font-size:11px;font-weight:900;white-space:nowrap}
+.hero{padding:55px 22px 45px;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;width:450px;height:450px;right:-150px;top:-180px;background:radial-gradient(circle,#ff684830,transparent 70%)}
+.hero:after{content:"";position:absolute;width:320px;height:320px;left:-180px;bottom:-210px;background:radial-gradient(circle,#d5ed7918,transparent 70%)}
+.hero-inner{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr .9fr;align-items:center;gap:35px;position:relative;z-index:1}
+.kicker{color:var(--lime);font-size:11px;font-weight:bold;letter-spacing:4px;text-transform:uppercase}
+.kicker:before{content:"";display:inline-block;width:25px;height:2px;background:var(--orange);margin-right:10px;vertical-align:middle}
+h1{font-size:clamp(48px,8vw,88px);line-height:.96;letter-spacing:-4px;margin:20px 0;font-weight:1000}
+h1 span,.menu-heading h2 span{color:var(--orange)}
+.hero-text{max-width:470px;color:#c2cbcc;font-size:15px}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;border-radius:10px;font-size:11px;font-weight:900}
+.btn-orange{background:var(--orange);color:#211713}
+
+/* LOGO ILLUSTRATO */
+.hero-logo-wrap{min-height:310px;display:grid;place-items:center;position:relative}
+.hero-logo{width:min(370px,90%);padding:22px 18px 20px;border-radius:26px;background:linear-gradient(155deg,#f7d9b5,#e9ad7b);color:#18232a;text-align:center;box-shadow:0 25px 50px #0008;border:1px solid #fff8;position:relative;overflow:hidden;transform:rotate(2deg)}
+.hero-logo:before{content:"";position:absolute;inset:9px;border:1px solid #9b593c80;border-radius:19px;pointer-events:none}
+.logo-sun{width:100%;height:104px;display:block}
+.logo-sun .sun-core{fill:#f4c52f;stroke:#d99d24;stroke-width:3}
+.logo-sun .rays{stroke:#e9b92e;stroke-width:7;stroke-linecap:round}
+.logo-illustration{display:flex;align-items:center;justify-content:center;gap:12px;margin:-3px 0 5px}
+.logo-illustration .side{font-size:37px;filter:drop-shadow(0 3px 1px #7c5a42)}
+.logo-illustration .center{font-size:48px;line-height:1}
+.logo-word{font-size:clamp(27px,5vw,39px);font-weight:1000;letter-spacing:2px;color:#15222a;line-height:1.05;text-shadow:1px 2px 0 #fff5}
+.logo-pizzeria{font-size:19px;font-weight:900;color:#17659a;line-height:1.3;margin-top:8px}
+.logo-sub{font-size:12px;font-weight:800;color:#28323a}
+.logo-rule{height:2px;width:70%;margin:13px auto 9px;background:#a76c49}
+.logo-foot{font-size:9px;font-weight:900;letter-spacing:1.2px;color:#35414a}
+.logo-stamp{position:absolute;right:3%;bottom:4%;background:var(--lime);color:#172019;padding:12px 15px;border-radius:12px;font-size:10px;font-weight:1000;transform:rotate(-5deg);box-shadow:0 8px 20px #0005}
+
+.container{max-width:1150px;margin:auto;padding:0 22px}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:25px 0 60px}
+.info{background:var(--card);border:1px solid var(--line);border-radius:13px;padding:17px;display:flex;align-items:center;gap:12px}
+.info-icon{font-size:24px}
+.info b{display:block;font-size:12px}
+.info small{color:var(--muted);font-size:10px}
+.menu-heading{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:23px}
+.eyebrow{color:var(--orange);font-size:10px;font-weight:900;letter-spacing:3px;text-transform:uppercase}
+.menu-heading h2{font-size:clamp(32px,5vw,48px);line-height:1.1;margin-top:8px;letter-spacing:-2px}
+.menu-heading p{max-width:280px;color:var(--muted);font-size:12px}
+.search-box{position:relative;margin:20px 0 15px}
+.search-box input{width:100%;padding:15px 17px;background:var(--card);color:white;border:1px solid var(--line);border-radius:11px;outline:none}
+.search-box input:focus{border-color:var(--lime);box-shadow:0 0 0 3px #d5ed7918}
+.tabs{display:flex;gap:9px;overflow-x:auto;padding:5px 0 15px;scrollbar-width:thin}
+.tab{flex-shrink:0;padding:10px 15px;border:1px solid var(--line);border-radius:9px;background:transparent;color:#c1cacc;font-size:11px;font-weight:900;cursor:pointer;transition:.2s}
+.tab.active,.tab:hover{background:var(--lime);border-color:var(--lime);color:#172019}
+.category{padding:30px 0 10px;scroll-margin-top:100px}
+.category-title{display:flex;align-items:center;gap:13px;margin-bottom:18px}
+.category-icon{width:45px;height:45px;border-radius:12px;background:#ff684820;border:1px solid #ff684850;display:grid;place-items:center;font-size:22px}
+.category-title h3{font-size:23px}
+.category-title small{color:var(--muted);font-size:10px}
+.category-line{flex:1;height:1px;background:var(--line)}
+.products{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.product{background:linear-gradient(135deg,var(--card),#15212a);border:1px solid var(--line);border-radius:13px;padding:17px;transition:border-color .2s,transform .2s}
+.product:hover{border-color:#657780;transform:translateY(-2px)}
+.product-top{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.product h4{font-size:13px;font-weight:900;letter-spacing:.3px}
+.price{color:var(--lime);font-size:14px;font-weight:1000;white-space:nowrap}
+.description{color:var(--muted);font-size:11px;margin-top:8px;line-height:1.6}
+.price-actions{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.add-cart{width:31px;height:31px;border:0;border-radius:50%;background:var(--lime);color:#172019;font-size:21px;font-weight:900;line-height:1;display:grid;place-items:center;cursor:pointer;flex-shrink:0;transition:transform .18s,background .18s}
+.add-cart:active{transform:scale(.86)}
+.add-cart.added{background:var(--orange);color:#211713;animation:addPop .38s ease}
+@keyframes addPop{0%{transform:scale(1)}45%{transform:scale(1.28) rotate(12deg)}100%{transform:scale(1)}}
+.fixed-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.fixed-card{background:linear-gradient(145deg,#293940,#17232d);border:1px solid #647079;border-radius:15px;padding:21px}
+.fixed-card h4{font-size:18px}
+.fixed-card .price{font-size:24px}
+.fixed-card p{color:#c0c9c9;font-size:12px;margin-top:12px;line-height:1.8}
+.notice{margin-top:14px;padding:13px 16px;background:#d5ed7910;border-left:3px solid var(--lime);border-radius:0 9px 9px 0;color:#c8d0c8;font-size:11px}
+.empty{display:none;text-align:center;padding:30px;color:var(--muted)}
+
+/* CARRELLO */
+.cart-overlay{display:none;position:fixed;inset:0;z-index:300;background:#000b;padding:15px;align-items:flex-end;justify-content:center}
+.cart-overlay.open{display:flex}
+.cart-box{width:100%;max-width:550px;max-height:82vh;overflow-y:auto;padding:22px;background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:0 15px 50px #0009;animation:cartAppear .24s ease}
+@keyframes cartAppear{from{transform:translateY(30px);opacity:0}to{transform:translateY(0);opacity:1}}
+.cart-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.cart-box h2{font-size:22px}
+.close-cart{width:34px;height:34px;border:0;border-radius:50%;background:#34434b;color:white;font-size:21px;cursor:pointer}
+.cart-row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}
+.cart-controls{display:flex;align-items:center;gap:8px}
+.cart-controls button{padding:5px 10px;cursor:pointer;border:0;border-radius:6px;background:var(--lime);color:#172019;font-weight:bold}
+.cart-total{color:var(--lime);font-size:22px;font-weight:900;margin:15px 0}
+.cart-box input{width:100%;padding:13px;margin:7px 0;border-radius:8px;border:1px solid var(--line);background:#101820;color:white}
+.send-order{width:100%;padding:15px;border:0;border-radius:9px;background:var(--orange);color:#211713;font-weight:900;cursor:pointer;margin-top:8px}
+.send-order:disabled{opacity:.6;cursor:wait}
+#order-message{margin-top:12px;font-size:13px}
+.toast{position:fixed;left:50%;bottom:86px;z-index:250;transform:translate(-50%,15px);opacity:0;pointer-events:none;background:#e5f3b2;color:#172019;padding:11px 17px;border-radius:30px;font-size:12px;font-weight:900;box-shadow:0 8px 25px #0006;transition:opacity .22s,transform .22s;white-space:nowrap}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.contact{margin-top:65px;padding:35px;border-radius:18px;background:linear-gradient(120deg,#ff6848,#d94d39);color:#211713}
+.contact h2{font-size:clamp(28px,5vw,43px);margin:8px 0}
+.contact p{max-width:530px;font-size:13px;margin-bottom:20px}
+.contact-btn{display:inline-block;padding:13px 18px;background:var(--bg);color:white;border-radius:9px;font-size:12px;font-weight:900}
+.address{margin-top:19px;font-size:11px;font-weight:bold}
+footer{text-align:center;padding:30px 0 40px;color:#7e8c91;font-size:10px}
+footer b{color:#d3dbd9;letter-spacing:3px}
+
+/* PULSANTI FISSI */
+.bottom-actions{position:fixed;bottom:15px;left:15px;right:15px;z-index:200;display:flex;justify-content:space-between;align-items:center;gap:10px;pointer-events:none}
+.bottom-actions a,.bottom-actions button{pointer-events:auto}
+.float-cart{border:0;background:var(--orange);color:#211713;padding:14px 19px;border-radius:50px;font-size:12px;font-weight:1000;cursor:pointer;box-shadow:0 4px 15px #0006;transition:transform .2s}
+.float-cart.bump{animation:cartBump .35s ease}
+@keyframes cartBump{0%,100%{transform:scale(1)}45%{transform:scale(1.1)}}
+.cart-count{display:inline-grid;place-items:center;min-width:21px;height:21px;margin-left:5px;padding:0 5px;border-radius:50px;background:#172019;color:var(--lime);font-size:11px}
+.float-call{background:var(--lime);color:#172019;padding:14px 19px;border-radius:50px;font-size:12px;font-weight:1000;box-shadow:0 4px 15px #0006}
+
+@media(max-width:700px){
+ .nav{padding:12px 14px}
+ .brand-name{font-size:13px}
+ .brand-sub{font-size:8px}
+ .hero{padding:40px 15px 25px}
+ .hero-inner{grid-template-columns:1fr;gap:5px}
+ h1{font-size:58px;letter-spacing:-3px}
+ .hero-text{font-size:13px}
+ .hero-logo-wrap{min-height:270px}
+ .hero-logo{width:min(330px,88%);padding:18px 15px}
+ .logo-sun{height:85px}
+ .logo-word{font-size:32px}
+ .container{padding:0 15px}
+ .info-grid{grid-template-columns:1fr;gap:8px;margin-bottom:40px}
+ .info{padding:13px}
+ .menu-heading{display:block}
+ .menu-heading p{margin-top:10px}
+ .products,.fixed-grid{grid-template-columns:1fr}
+ .category{padding-top:23px}
+ .contact{padding:25px 19px}
+ .bottom-actions{left:12px;right:12px;bottom:12px}
+ .float-cart,.float-call{padding:13px 15px;font-size:11px}
+ .cart-overlay{padding:0}
+ .cart-box{max-width:none;border-radius:18px 18px 0 0;max-height:85vh}
+}
 @media(min-width:950px){.products{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
 </style>
+
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
 </head>
+
 <body>
 <div class="top-line"></div>
-<header><nav class="nav"><a href="#inizio" class="brand"><div class="brand-symbol">✦</div><div><div class="brand-name">LE PLUS BON</div><div class="brand-sub">DA SOLE E ROSSELLA · TRIGGIANO</div></div></a><a class="call-top" href="tel:+390804688639">☎ CHIAMA</a></nav></header>
-<section class="hero" id="inizio"><div class="hero-inner"><div><div class="kicker">Pizzeria · Triggiano</div><h1>IL GUSTO<br>FA <span>FESTA.</span></h1><p class="hero-text">Le pizze, le specialità e tutto il piacere di stare a tavola. Sfoglia il nostro menu e trova quello che ti va.</p><div class="hero-buttons"><a href="#menu" class="btn btn-orange">ESPLORA IL MENU ↘</a><a href="tel:+390804688639" class="btn btn-outline">☎ CHIAMA E ORDINA</a></div></div>
-<div class="art-area"><div class="pizza-art"><svg viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="crust" cx="38%" cy="30%"><stop offset="0" stop-color="#ffe7a8"/><stop offset=".72" stop-color="#e9a34f"/><stop offset="1" stop-color="#b95e32"/></radialGradient><radialGradient id="cheese"><stop offset="0" stop-color="#fff1b8"/><stop offset="1" stop-color="#f4bd62"/></radialGradient><filter id="shadow"><feGaussianBlur stdDeviation="5"/></filter></defs>
-<!-- ombra e bordo della pizza --><ellipse cx="205" cy="218" rx="174" ry="166" fill="#000" opacity=".3" filter="url(#shadow)"/><circle cx="200" cy="190" r="174" fill="#b85a32"/><circle cx="200" cy="185" r="165" fill="url(#crust)" stroke="#ffd18a" stroke-width="7"/><circle cx="200" cy="185" r="143" fill="url(#cheese)" stroke="#e58b3c" stroke-width="3"/>
-<!-- salsa e formaggio --><path d="M91 143 Q130 87 187 112 Q241 78 293 133 Q332 181 293 236 Q260 292 195 278 Q131 300 94 240 Q64 195 91 143Z" fill="#e96b3e" opacity=".28"/>
-<!-- mozzarella --> <g fill="#fff2ce" opacity=".95"><ellipse cx="145" cy="132" rx="24" ry="17" transform="rotate(-25 145 132)"/><ellipse cx="242" cy="116" rx="22" ry="15" transform="rotate(22 242 116)"/><ellipse cx="278" cy="198" rx="24" ry="17" transform="rotate(-30 278 198)"/><ellipse cx="171" cy="236" rx="25" ry="18" transform="rotate(18 171 236)"/><ellipse cx="112" cy="202" rx="18" ry="14"/><ellipse cx="220" cy="177" rx="19" ry="14"/></g>
-<!-- pomodorini --> <g fill="#c94132" stroke="#a72f28" stroke-width="2"><circle cx="184" cy="130" r="17"/><circle cx="267" cy="153" r="16"/><circle cx="133" cy="193" r="17"/><circle cx="225" cy="245" r="18"/><circle cx="286" cy="233" r="13"/></g><g fill="#f77b55"><circle cx="179" cy="125" r="5"/><circle cx="262" cy="148" r="5"/><circle cx="128" cy="188" r="5"/><circle cx="220" cy="239" r="5"/></g>
-<!-- basilico --> <g fill="#397b43" stroke="#245c35" stroke-width="2"><path d="M205 91 Q208 62 236 69 Q237 95 205 91Z"/><path d="M104 161 Q76 140 84 119 Q111 122 104 161Z"/><path d="M251 278 Q257 248 282 254 Q279 280 251 278Z"/><path d="M165 278 Q143 262 151 242 Q174 248 165 278Z"/></g><g stroke="#a6c66b" stroke-width="2" fill="none"><path d="M207 90l24-17M103 159l-14-32M252 276l23-18M165 275l-8-27"/></g>
-<!-- dettagli crosta --> <g fill="#9b4b2d" opacity=".55"><circle cx="88" cy="90" r="4"/><circle cx="122" cy="55" r="3"/><circle cx="300" cy="75" r="4"/><circle cx="335" cy="151" r="3"/><circle cx=" seventy" cy="220" r="3"/><circle cx="305" cy="303" r="4"/><circle cx="135" cy="322" r="3"/></g>
-<!-- scintille --> <g fill="#d5ed79"><path d="M54 91l7 16 16 7-16 7-7 16-7-16-16-7 16-7z"/><path d="M337 76l5 12 12 5-12 5-5 12-5-12-12-5 12-5z"/><path d="M333 285l6 13 13 6-13 6-6 13-6-13-13-6 13-6z"/></g><circle cx="200" cy="185" r="153" fill="none" stroke="#fff1d8" stroke-width="2" stroke-dasharray="4 10" opacity=".5"/></svg></div><div class="art-tag">FATTO CON GUSTO<span>✦</span>TRIGGIANO</div></div></div></section>
-<main class="container"><section class="info-grid"><div class="info"><span class="info-icon">📍</span><div><b>Ci trovi a Triggiano</b><small>Piazza Giovanni XXIII, 1/D</small></div></div><div class="info"><span class="info-icon">🛵</span><div><b>Consegna a domicilio</b><small>Supplemento indicato: € 1,00</small></div></div><div class="info"><span class="info-icon">☎</span><div><b>Ordini telefonici</b><small>080 468 8639</small></div></div></section>
-<section id="menu"><div class="menu-heading"><div><div class="eyebrow">La carta</div><h2>IL NOSTRO MENU<span>.</span></h2></div><p>Scopri tutte le proposte di LE PLUS BON. Cerca direttamente il tuo piatto preferito.</p></div><div class="search-box"><span class="search-icon">⌕</span><input type="search" id="search" placeholder="Cerca pizza, ingrediente, bevanda..."></div><nav class="tabs" id="tabs"></nav><div id="content"></div><p class="empty" id="empty">Nessun risultato. Prova un'altra ricerca.</p></section>
-<section class="contact"><div class="contact-inner"><div class="eyebrow">Siamo a tua disposizione</div><h2>TI È VENUTA FAME?</h2><p>Per informazioni, ordini e consegna a domicilio, chiama direttamente LE PLUS BON – Pizzeria da Sole e Rossella.</p><div class="contact-buttons"><a class="contact-btn" href="tel:+390804688639">☎ 080 468 8639</a></div><div class="address">📍 Piazza Giovanni XXIII, 1/D · 70019 Triggiano (BA)</div></div></section>
-<footer><b>LE PLUS BON</b><br>Pizzeria da Sole e Rossella · Triggiano<br>Menu digitale</footer></main><a href="tel:+390804688639" class="float-call">☎ CHIAMA</a>
+
+<header>
+<nav class="nav">
+<a href="#inizio" class="brand" aria-label="LE PLUS BON - Inizio">
+ <div class="brand-mark" aria-hidden="true">
+  <svg viewBox="0 0 100 100">
+   <rect width="100" height="100" rx="16" fill="#f2c99e"/>
+   <g stroke="#e5ad28" stroke-width="4" stroke-linecap="round">
+    <path d="M50 7V17M50 83V93M7 50H17M83 50H93M20 20L27 27M73 73L80 80M80 20L73 27M27 73L20 80"/>
+   </g>
+   <circle cx="50" cy="50" r="25" fill="#f4c52f" stroke="#d79d24" stroke-width="3"/>
+   <path d="M27 79Q50 64 73 79" fill="none" stroke="#a34d38" stroke-width="5" stroke-linecap="round"/>
+   <path d="M37 80V69Q50 56 63 69V80" fill="#c75c3d" stroke="#773e30" stroke-width="3"/>
+  </svg>
+ </div>
+ <div><div class="brand-name">LE PLUS BON</div><div class="brand-sub">DA SOLE E ROSSELLA · TRIGGIANO</div></div>
+</a>
+<a class="call-top" href="tel:+390804688639">☎ CHIAMA</a>
+</nav>
+</header>
+
+<section class="hero" id="inizio">
+<div class="hero-inner">
+ <div>
+  <div class="kicker">Pizzeria · Triggiano</div>
+  <h1>IL GUSTO<br>FA <span>FESTA.</span></h1>
+  <p class="hero-text">Le pizze, le specialità e tutto il piacere di stare a tavola. Sfoglia il nostro menu e trova quello che ti va.</p>
+  <div class="hero-buttons"><a href="#menu" class="btn btn-orange">ESPLORA IL MENU ↘</a></div>
+ </div>
+
+ <div class="hero-logo-wrap">
+  <div class="hero-logo" aria-label="Logo illustrato LE PLUS BON Pizzeria da Sole e Rossella">
+   <svg class="logo-sun" viewBox="0 0 320 110" aria-hidden="true">
+    <g class="rays">
+     <path d="M160 5V22M160 88V105M55 55H76M244 55H265M86 17L101 32M219 78L234 93M234 17L219 32M101 78L86 93M119 8L127 28M193 82L201 102M201 8L193 28M127 82L119 102"/>
+    </g>
+    <circle class="sun-core" cx="160" cy="55" r="31"/>
+    <circle cx="150" cy="45" r="5" fill="#fff4a8" opacity=".65"/>
+   </svg>
+   <div class="logo-illustration"><span class="side">🌿</span><span class="center">🍕</span><span class="side">🌿</span></div>
+   <div class="logo-word">LE PLUS BON</div>
+   <div class="logo-pizzeria">Pizzeria</div>
+   <div class="logo-sub">da Sole e Rossella</div>
+   <div class="logo-rule"></div>
+   <div class="logo-foot">TRADIZIONE · GUSTO · OSPITALITÀ</div>
+  </div>
+  <div class="logo-stamp">FATTO CON GUSTO ✦ TRIGGIANO</div>
+ </div>
+</div>
+</section>
+
+<main class="container">
+<section class="info-grid">
+ <div class="info"><span class="info-icon">📍</span><div><b>Ci trovi a Triggiano</b><small>Piazza Giovanni XXIII, 1/D</small></div></div>
+ <div class="info"><span class="info-icon">🛵</span><div><b>Consegna a domicilio</b><small>Supplemento indicato: € 1,00</small></div></div>
+ <div class="info"><span class="info-icon">☎</span><div><b>Ordini telefonici</b><small>080 468 8639</small></div></div>
+</section>
+
+<section id="menu">
+ <div class="menu-heading"><div><div class="eyebrow">La carta</div><h2>IL NOSTRO MENU<span>.</span></h2></div><p>Scopri tutte le proposte di LE PLUS BON. Cerca direttamente il tuo piatto preferito.</p></div>
+ <div class="search-box"><input type="search" id="search" placeholder="Cerca pizza, ingrediente, bevanda..." aria-label="Cerca nel menu"></div>
+ <nav class="tabs" id="tabs" aria-label="Categorie menu"></nav>
+ <div id="content"></div>
+ <p class="empty" id="empty">Nessun risultato. Prova un'altra ricerca.</p>
+</section>
+
+<section class="contact">
+ <div class="eyebrow">Siamo a tua disposizione</div>
+ <h2>TI È VENUTA FAME?</h2>
+ <p>Per informazioni, ordini e consegna a domicilio, chiama direttamente LE PLUS BON – Pizzeria da Sole e Rossella.</p>
+ <a class="contact-btn" href="tel:+390804688639">☎ 080 468 8639</a>
+ <div class="address">📍 Piazza Giovanni XXIII, 1/D · 70019 Triggiano (BA)</div>
+</section>
+
+<footer><b>LE PLUS BON</b><br>Pizzeria da Sole e Rossella · Triggiano<br>Menu digitale</footer>
+</main>
+
+<div class="bottom-actions">
+ <button class="float-cart" id="open-cart">🛒 CARRELLO <span class="cart-count" id="cart-count">0</span></button>
+ <a class="float-call" href="tel:+390804688639">☎ CHIAMA</a>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<div class="cart-overlay" id="cart-overlay">
+ <section class="cart-box" role="dialog" aria-modal="true" aria-labelledby="cart-title">
+  <div class="cart-header"><h2 id="cart-title">🛒 Il tuo ordine</h2><button class="close-cart" id="close-cart" aria-label="Chiudi carrello">×</button></div>
+  <div id="cart-items">Il carrello è vuoto.</div>
+  <div class="cart-total" id="cart-total">Totale: € 0,00</div>
+  <input id="table-number" type="number" min="1" max="100" step="1" placeholder="Numero del tavolo">
+  <input id="customer-name" type="text" maxlength="60" placeholder="Nome (facoltativo)">
+  <button class="send-order" id="send-order">INVIA ORDINE</button>
+  <p id="order-message" role="status" aria-live="polite"></p>
+ </section>
+</div>
 <script>
+const firebaseConfig = {
+ apiKey:"AIzaSyCKbb2IAZJpYorJCy66Dr95DWGwoUkVGDM",
+ authDomain:"ordinazioni-plus-de-bon.firebaseapp.com",
+ projectId:"ordinazioni-plus-de-bon",
+ storageBucket:"ordinazioni-plus-de-bon.firebasestorage.app",
+ messagingSenderId:"1074646917867",
+ appId:"1:1074646917867:web:65dfa316d7aebf7675d4ae",
+ measurementId:"G-4BPGP9DHCD"
+};
+
+if(!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+const db=firebase.firestore();
+
 const DATA=[
 {key:"specialita",title:"Le nostre specialità",icon:"⭐",items:[
-["BUFALA E PORCINI","8,00","Pomodoro, mozzarella di bufala, funghi porcini, pomodorini, formaggio, olio e pepe."],["GAMBERI BIANCA","8,00","Mozzarella, gamberetti, pangrattato, zucchine, formaggio e olio."],["NORCINA","7,00","Pomodoro, mozzarella, salsiccia di Norcia, formaggio, olio e pepe."],["MEDAGLIONE","6,00","Pomodorini, mozzarella, prosciutto cotto, rucola o insalata (tutto crudo)."],["GIGI","7,00","Pomodorini, mozzarella, prosciutto cotto, rucola e olio."],["SCHIACCIATA","6,00","Pomodorini, mozzarella, ricotta forte, formaggio, olio e pepe."],["CICCIO CONDITO","7,00","Pomodorini, mozzarella, prosciutto crudo, rucola e olio."],["BRESAOLA","7,00","Pomodoro, mozzarella, bresaola, rucola e formaggio."]]},
+["BUFALA E PORCINI","8,00","Pomodoro, mozzarella di bufala, funghi porcini, pomodorini, formaggio, olio e pepe."],
+["GAMBERI BIANCA","8,00","Mozzarella, gamberetti, pangrattato, zucchine, formaggio e olio."],
+["NORCINA","7,00","Pomodoro, mozzarella, salsiccia di Norcia, formaggio, olio e pepe."],
+["MEDAGLIONE","6,00","Pomodorini, mozzarella, prosciutto cotto, rucola o insalata (tutto crudo)."],
+["GIGI","7,00","Pomodorini, mozzarella, prosciutto cotto, rucola e olio."],
+["SCHIACCIATA","6,00","Pomodorini, mozzarella, ricotta forte, formaggio, olio e pepe."],
+["CICCIO CONDITO","7,00","Pomodorini, mozzarella, prosciutto crudo, rucola e olio."],
+["BRESAOLA","7,00","Pomodoro, mozzarella, bresaola, rucola e formaggio."]
+]},
 {key:"classiche",title:"Pizze classiche",icon:"🍕",items:[
-["CICCIO","2,50","Origano e olio."],["MARINARA","3,50","Pomodoro, origano, olio e aglio."],["MARGHERITA","5,00","Pomodoro, mozzarella, formaggio, olio e pepe."],["ROMANA","6,00","Pomodoro, mozzarella, acciughe, capperi, formaggio, olio e pepe."],["NAPOLETANA","6,00","Pomodorini, mozzarella, acciughe, origano, formaggio, olio e pepe."],["WÜRSTEL","6,00","Pomodorini, mozzarella, würstel, formaggio, olio e pepe."],["DIAVOLA","6,00","Pomodorini, mozzarella, salame piccante, formaggio, olio e pepe."],["CAPRICCIOSA","7,00","Pomodoro, mozzarella, carciofi, funghi, formaggio, prosciutto cotto, olio e pepe."],["FUMÉ","7,00","Pomodoro, mozzarella, scamorza affumicata, speck, formaggio, olio e pepe."]]},
+["CICCIO","2,50","Origano e olio."],
+["MARINARA","3,50","Pomodoro, origano, olio e aglio."],
+["MARGHERITA","5,00","Pomodoro, mozzarella, formaggio, olio e pepe."],
+["ROMANA","6,00","Pomodoro, mozzarella, acciughe, capperi, formaggio, olio e pepe."],
+["NAPOLETANA","6,00","Pomodorini, mozzarella, acciughe, origano, formaggio, olio e pepe."],
+["WÜRSTEL","6,00","Pomodorini, mozzarella, würstel, formaggio, olio e pepe."],
+["DIAVOLA","6,00","Pomodorini, mozzarella, salame piccante, formaggio, olio e pepe."],
+["CAPRICCIOSA","7,00","Pomodoro, mozzarella, carciofi, funghi, formaggio, prosciutto cotto, olio e pepe."],
+["FUMÉ","7,00","Pomodoro, mozzarella, scamorza affumicata, speck, formaggio, olio e pepe."]
+]},
 {key:"altrepizze",title:"Altre pizze",icon:"🌿",items:[
-["ORTOLANA","6,50","Pomodoro, mozzarella, pangrattato, formaggio, olio, pepe e verdure miste (zucchine, melanzane, peperoni, ecc.)."],["STRACCIATELLA E CRUDO","7,00","Pomodoro, stracciatella, prosciutto crudo, formaggio, olio e pepe."],["STRACCIATELLA","6,00","Pomodoro, stracciatella, formaggio, olio e pepe."],["PARISIENNE","7,00","Pomodoro, mozzarella, formaggio francese, bacon, formaggio, olio e pepe."],["AL TONNO","6,50","Pomodoro, mozzarella, tonno, capperi, formaggio, olio e pepe."],["CRUDIOLA","6,50","Pomodoro, mozzarella, pomodorini, rucola, ricotta marzotica, formaggio, olio e pepe."],["FUNGHI FRESCHI E COTTO","6,50","Pomodoro, mozzarella, prosciutto cotto, funghi freschi, formaggio, olio e pepe."],["BUFALA","7,00","Mozzarella di bufala, pomodorini, olio e pepe."],["QUATTRO FORMAGGI","7,00","Pomodorini, mozzarella, formaggio, emmental, gorgonzola, scamorza, olio e pepe."],["QUATTRO STAGIONI","7,00","Pomodoro, mozzarella, funghi, prosciutto cotto, capperi, formaggio, würstel, carciofi, olio e pepe."]]},
+["ORTOLANA","6,50","Pomodoro, mozzarella, pangrattato, formaggio, olio, pepe e verdure miste (zucchine, melanzane, peperoni, ecc.)."],
+["STRACCIATELLA E CRUDO","7,00","Pomodoro, stracciatella, prosciutto crudo, formaggio, olio e pepe."],
+["STRACCIATELLA","6,00","Pomodoro, stracciatella, formaggio, olio e pepe."],
+["PARISIENNE","7,00","Pomodoro, mozzarella, formaggio francese, bacon, formaggio, olio e pepe."],
+["AL TONNO","6,50","Pomodoro, mozzarella, tonno, capperi, formaggio, olio e pepe."],
+["CRUDIOLA","6,50","Pomodoro, mozzarella, pomodorini, rucola, ricotta marzotica, formaggio, olio e pepe."],
+["FUNGHI FRESCHI E COTTO","6,50","Pomodoro, mozzarella, prosciutto cotto, funghi freschi, formaggio, olio e pepe."],
+["BUFALA","7,00","Mozzarella di bufala, pomodorini, olio e pepe."],
+["QUATTRO FORMAGGI","7,00","Pomodorini, mozzarella, formaggio, emmental, gorgonzola, scamorza, olio e pepe."],
+["QUATTRO STAGIONI","7,00","Pomodoro, mozzarella, funghi, prosciutto cotto, capperi, formaggio, würstel, carciofi, olio e pepe."]
+]},
 {key:"menu-fissi",title:"Menu fissi",icon:"🍽️",items:[
-["MENU DA € 15","15,00","Bruschette e olive · Prosciutto crudo e mozzarella · Involtini di speck · Patatine · Una pizza a scelta tra Margherita, Diavola, ai funghi freschi, Würstel o Romana · 1 bevanda."],["MENU DA € 25","25,00","Bruschette e olive · 6 portate di antipasti caldi e freddi · Patatine · Una pizza a scelta · 1 bevanda · Dolce della casa · Amaro o limoncello."]]},
-{key:"fritti",title:"Fritti",icon:"🍤",items:[["FRITTURA DI PESCE E CALAMARI","10,00","Porzione per 2 persone."]]},
-{key:"bevande",title:"Bevande",icon:"🥤",items:[["BEVANDA IN LATTINA","2,00",""],["ACQUA ½ LITRO","1,00",""],["ACQUA 1 LITRO","2,00",""],["BIRRA 33 CL","2,00",""],["BIRRA 66 CL","3,50",""],["BIRRA TENNENT'S 50 CL","3,50",""],["BIRRA ROSSA","4,00",""],["PROSECCO","10,00",""],["VINO IN BOTTIGLIA ROSSO/BIANCO","10,00",""],["AMARO O LIMONCELLO","2,00",""],["GRAPPA","3,00",""],["CAFFÈ","1,00",""]]},
-{key:"dolci",title:"Dolci",icon:"🍰",items:[["DOLCE DELLA CASA","4,00","Specialità dolce della casa."],["PANNA COTTA","4,00","Disponibile in vari gusti."],["TIRAMISÙ","4,00",""],["SEMIFREDDI","4,00","Gusti secondo disponibilità."],["SUFFLÉ AL CIOCCOLATO","4,00",""],["CROSTATA AL CIOCCOLATO","4,00",""],["CAPRESE AL CIOCCOLATO BIANCO E MANDORLE","4,00",""],["CAPRESE AL CIOCCOLATO E NUTELLA","4,00",""]]}
+["MENU DA € 15","15,00","Bruschette e olive · Prosciutto crudo e mozzarella · Involtini di speck · Patatine · Una pizza a scelta tra Margherita, Diavola, ai funghi freschi, Würstel o Romana · 1 bevanda."],
+["MENU DA € 25","25,00","Bruschette e olive · 6 portate di antipasti caldi e freddi · Patatine · Una pizza a scelta · 1 bevanda · Dolce della casa · Amaro o limoncello."]
+]},
+{key:"fritti",title:"Fritti",icon:"🍤",items:[
+["FRITTURA DI PESCE E CALAMARI","10,00","Porzione per 2 persone."]
+]},
+{key:"bevande",title:"Bevande",icon:"🥤",items:[
+["BEVANDA IN LATTINA","2,00",""],
+["ACQUA ½ LITRO","1,00",""],
+["ACQUA 1 LITRO","2,00",""],
+["BIRRA 33 CL","2,00",""],
+["BIRRA 66 CL","3,50",""],
+["BIRRA TENNENT'S 50 CL","3,50",""],
+["BIRRA ROSSA","4,00",""],
+["PROSECCO","10,00",""],
+["VINO IN BOTTIGLIA ROSSO/BIANCO","10,00",""],
+["AMARO O LIMONCELLO","2,00",""],
+["GRAPPA","3,00",""],
+["CAFFÈ","1,00",""]
+]},
+{key:"dolci",title:"Dolci",icon:"🍰",items:[
+["DOLCE DELLA CASA","4,00","Specialità dolce della casa."],
+["PANNA COTTA","4,00","Disponibile in vari gusti."],
+["TIRAMISÙ","4,00",""],
+["SEMIFREDDI","4,00","Gusti secondo disponibilità."],
+["SUFFLÉ AL CIOCCOLATO","4,00",""],
+["CROSTATA AL CIOCCOLATO","4,00",""],
+["CAPRESE AL CIOCCOLATO BIANCO E MANDORLE","4,00",""],
+["CAPRESE AL CIOCCOLATO E NUTELLA","4,00",""]
+]}
 ];
-const labels={specialita:"Specialità",classiche:"Pizze classiche",altrepizze:"Altre pizze","menu-fissi":"Menu fissi",fritti:"Fritti",bevande:"Bevande",dolci:"Dolci"};const tabs=document.getElementById("tabs"),content=document.getElementById("content"),search=document.getElementById("search"),empty=document.getElementById("empty");let active="tutto";
-function safe(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-function productCard(item){return `<article class="product"><div class="product-top"><h4>${safe(item[0])}</h4><span class="price">€ ${safe(item[1])}</span></div>${item[2]?`<p class="description">${safe(item[2])}</p>`:""}</article>`}
-function renderMenu(){const q=search.value.trim().toLocaleLowerCase("it");content.innerHTML="";let total=0;DATA.forEach(section=>{if(active!=="tutto"&&active!==section.key)return;const products=section.items.filter(item=>item.join(" ").toLocaleLowerCase("it").includes(q));if(!products.length)return;total+=products.length;if(section.key==="menu-fissi"){const html=products.map(item=>`<article class="fixed-card"><div class="product-top"><h4>${safe(item[0])}</h4><span class="price">€ ${safe(item[1])}</span></div><p>${safe(item[2])}</p></article>`).join("");content.insertAdjacentHTML("beforeend",`<section class="category" id="${section.key}"><div class="category-title"><div class="category-icon">${section.icon}</div><div><h3>${safe(section.title)}</h3><small>Le nostre proposte complete</small></div><div class="category-line"></div></div><div class="fixed-grid">${html}</div></section>`)}else{const html=products.map(productCard).join("");let subtitle="Scopri tutte le proposte";if(section.key==="specialita")subtitle="Le proposte della casa";if(section.key==="classiche")subtitle="I grandi classici";if(section.key==="dolci")subtitle="Tutti a € 4,00";content.insertAdjacentHTML("beforeend",`<section class="category" id="${section.key}"><div class="category-title"><div class="category-icon">${section.icon}</div><div><h3>${safe(section.title)}</h3><small>${subtitle}</small></div><div class="category-line"></div></div><div class="products">${html}</div>${section.key==="dolci"?`<div class="notice">Tutti i dolci costano € 4,00. Per ingredienti specifici e disponibilità, chiedi conferma al locale.</div>`:""}${section.key==="fritti"?`<div class="notice">La frittura è indicata per 2 persone.</div>`:""}</section>`)}});empty.style.display=total?"none":"block"}
-[["tutto","Tutto"],...DATA.map(s=>[s.key,labels[s.key]])].forEach(([key,label])=>{const b=document.createElement("button");b.className="tab"+(key==="tutto"?" active":"");b.dataset.key=key;b.textContent=label;b.addEventListener("click",()=>{active=key;[...tabs.children].forEach(x=>x.classList.toggle("active",x.dataset.key===key));renderMenu();if(key!=="tutto"&&!search.value)document.getElementById(key)?.scrollIntoView({behavior:"smooth",block:"start"})});tabs.appendChild(b)});search.addEventListener("input",()=>{active="tutto";[...tabs.children].forEach(x=>x.classList.toggle("active",x.dataset.key==="tutto"));renderMenu()});renderMenu();
+
+const labels={
+ specialita:"Specialità",
+ classiche:"Pizze classiche",
+ altrepizze:"Altre pizze",
+ "menu-fissi":"Menu fissi",
+ fritti:"Fritti",
+ bevande:"Bevande",
+ dolci:"Dolci"
+};
+
+const tabs=document.getElementById("tabs");
+const content=document.getElementById("content");
+const search=document.getElementById("search");
+const empty=document.getElementById("empty");
+const toast=document.getElementById("toast");
+
+let active="tutto";
+let cart=[];
+let toastTimer;
+
+function safe(v){
+ return String(v).replace(/[&<>"']/g,c=>({
+  "&":"&amp;",
+  "<":"&lt;",
+  ">":"&gt;",
+  '"':"&quot;",
+  "'":"&#39;"
+ }[c]));
+}
+
+function showToast(message){
+ toast.textContent=message;
+ toast.classList.add("show");
+ clearTimeout(toastTimer);
+ toastTimer=setTimeout(()=>toast.classList.remove("show"),1500);
+}
+
+function productCard(item){
+ const price=Number(item[1].replace(",","."));
+
+ return `<article class="product">
+ <div class="product-top">
+ <h4>${safe(item[0])}</h4>
+ <div class="price-actions">
+ <span class="price">€ ${safe(item[1])}</span>
+ <button class="add-cart" type="button"
+ aria-label="Aggiungi ${safe(item[0])} al carrello"
+ data-name="${safe(item[0])}"
+ data-price="${price}">+</button>
+ </div>
+ </div>
+ ${item[2]?`<p class="description">${safe(item[2])}</p>`:""}
+ </article>`;
+}
+
+function renderMenu(){
+ const q=search.value.trim().toLocaleLowerCase("it");
+ content.innerHTML="";
+ let total=0;
+
+ DATA.forEach(section=>{
+  if(active!=="tutto"&&active!==section.key)return;
+
+  const products=section.items.filter(item=>
+   item.join(" ").toLocaleLowerCase("it").includes(q)
+  );
+
+  if(!products.length)return;
+  total+=products.length;
+
+  if(section.key==="menu-fissi"){
+   const html=products.map(item=>`
+   <article class="fixed-card">
+    <div class="product-top">
+     <h4>${safe(item[0])}</h4>
+     <div class="price-actions">
+      <span class="price">€ ${safe(item[1])}</span>
+      <button class="add-cart" type="button"
+       aria-label="Aggiungi ${safe(item[0])} al carrello"
+       data-name="${safe(item[0])}"
+       data-price="${Number(item[1].replace(",", "."))}">+</button>
+     </div>
+    </div>
+    <p>${safe(item[2])}</p>
+   </article>`).join("");
+
+   content.insertAdjacentHTML("beforeend",`
+   <section class="category" id="${section.key}">
+    <div class="category-title">
+     <div class="category-icon">${section.icon}</div>
+     <div>
+      <h3>${safe(section.title)}</h3>
+      <small>Le nostre proposte complete</small>
+     </div>
+     <div class="category-line"></div>
+    </div>
+    <div class="fixed-grid">${html}</div>
+   </section>`);
+
+  }else{
+   const html=products.map(productCard).join("");
+   let subtitle="Scopri tutte le proposte";
+
+   if(section.key==="specialita")subtitle="Le proposte della casa";
+   if(section.key==="classiche")subtitle="I grandi classici";
+   if(section.key==="dolci")subtitle="Tutti a € 4,00";
+
+   content.insertAdjacentHTML("beforeend",`
+   <section class="category" id="${section.key}">
+    <div class="category-title">
+     <div class="category-icon">${section.icon}</div>
+     <div>
+      <h3>${safe(section.title)}</h3>
+      <small>${subtitle}</small>
+     </div>
+     <div class="category-line"></div>
+    </div>
+    <div class="products">${html}</div>
+    ${section.key==="dolci"?`<div class="notice">Tutti i dolci costano € 4,00. Per ingredienti specifici e disponibilità, chiedi conferma al locale.</div>`:""}
+    ${section.key==="fritti"?`<div class="notice">La frittura è indicata per 2 persone.</div>`:""}
+   </section>`);
+  }
+ });
+
+ empty.style.display=total?"none":"block";
+}
+
+[["tutto","Tutto"],...DATA.map(s=>[s.key,labels[s.key]])].forEach(([key,label])=>{
+ const b=document.createElement("button");
+ b.className="tab"+(key==="tutto"?" active":"");
+ b.dataset.key=key;
+ b.textContent=label;
+
+ b.addEventListener("click",()=>{
+  active=key;
+
+  [...tabs.children].forEach(x=>
+   x.classList.toggle("active",x.dataset.key===key)
+  );
+
+  renderMenu();
+
+  if(key!=="tutto"&&!search.value){
+   document.getElementById(key)?.scrollIntoView({
+    behavior:"smooth",
+    block:"start"
+   });
+  }
+ });
+
+ tabs.appendChild(b);
+});
+
+search.addEventListener("input",()=>{
+ active="tutto";
+
+ [...tabs.children].forEach(x=>
+  x.classList.toggle("active",x.dataset.key==="tutto")
+ );
+
+ renderMenu();
+});
+
+renderMenu();
+// APERTURA E CHIUSURA CARRELLO
+const cartOverlay=document.getElementById("cart-overlay");
+
+document.getElementById("open-cart").addEventListener("click",()=>{
+ cartOverlay.classList.add("open");
+});
+
+document.getElementById("close-cart").addEventListener("click",()=>{
+ cartOverlay.classList.remove("open");
+});
+
+cartOverlay.addEventListener("click",e=>{
+ if(e.target===cartOverlay){
+  cartOverlay.classList.remove("open");
+ }
+});
+
+document.addEventListener("keydown",e=>{
+ if(e.key==="Escape"){
+  cartOverlay.classList.remove("open");
+ }
+});
+
+// AGGIUNTA PRODOTTI AL CARRELLO CON ANIMAZIONE
+content.addEventListener("click",e=>{
+ const button=e.target.closest(".add-cart");
+ if(!button)return;
+
+ const name=button.dataset.name;
+ const price=Number(button.dataset.price);
+
+ const existing=cart.find(item=>item.name===name);
+
+ if(existing)existing.quantity++;
+ else cart.push({name,price,quantity:1});
+
+ // Animazione del pulsante +
+ button.classList.remove("added");
+ void button.offsetWidth;
+ button.classList.add("added");
+ button.textContent="✓";
+
+ setTimeout(()=>{
+  button.textContent="+";
+  button.classList.remove("added");
+ },650);
+
+ // Notifica di conferma
+ showToast(name+" aggiunta al carrello");
+
+ // Aggiorna carrello e contatore
+ renderCart(true);
+});
+
+// AGGIORNAMENTO CARRELLO
+function renderCart(animate=false){
+
+ const box=document.getElementById("cart-items");
+
+ if(!cart.length){
+  box.textContent="Il carrello è vuoto.";
+ }else{
+
+  box.innerHTML=cart.map((item,index)=>`
+   <div class="cart-row">
+    <div>
+     <b>${safe(item.name)}</b><br>
+     € ${(item.price*item.quantity).toFixed(2).replace(".",",")}
+    </div>
+
+    <div class="cart-controls">
+     <button type="button"
+      aria-label="Diminuisci quantità"
+      onclick="changeQuantity(${index},-1)">−</button>
+
+     ${item.quantity}
+
+     <button type="button"
+      aria-label="Aumenta quantità"
+      onclick="changeQuantity(${index},1)">+</button>
+    </div>
+   </div>
+  `).join("");
+ }
+
+ // Calcolo totale
+ const total=cart.reduce((sum,item)=>
+  sum+item.price*item.quantity,0
+ );
+
+ document.getElementById("cart-total").textContent=
+  "Totale: € "+total.toFixed(2).replace(".",",");
+
+ // Numero prodotti
+ const count=cart.reduce((sum,item)=>
+  sum+item.quantity,0
+ );
+
+ document.getElementById("cart-count").textContent=count;
+
+ // Animazione pulsante carrello
+ if(animate){
+
+  const cartButton=document.getElementById("open-cart");
+
+  cartButton.classList.remove("bump");
+  void cartButton.offsetWidth;
+  cartButton.classList.add("bump");
+ }
+}
+
+// MODIFICA QUANTITÀ
+window.changeQuantity=(index,amount)=>{
+
+ cart[index].quantity+=amount;
+
+ if(cart[index].quantity<=0){
+  cart.splice(index,1);
+ }
+
+ renderCart();
+};
+
+// INVIO ORDINE A FIREBASE
+document.getElementById("send-order").addEventListener("click",async()=>{
+
+ const tableInput=document.getElementById("table-number");
+ const table=Number(tableInput.value);
+
+ const customer=document.getElementById("customer-name").value.trim();
+
+ const message=document.getElementById("order-message");
+ const button=document.getElementById("send-order");
+
+ // Controllo tavolo
+ if(!Number.isInteger(table)||table<1||table>100){
+  message.textContent="Inserisci un numero di tavolo valido.";
+  return;
+ }
+
+ // Controllo carrello
+ if(!cart.length){
+  message.textContent="Aggiungi almeno un prodotto al carrello.";
+  return;
+ }
+
+ // Calcolo totale
+ const total=cart.reduce((sum,item)=>
+  sum+item.price*item.quantity,0
+ );
+
+ // Creazione ordine
+ const order={
+  tavolo:table,
+  cliente:customer,
+
+  prodotti:cart.map(item=>({
+   nome:item.name,
+   prezzo:item.price,
+   quantita:item.quantity
+  })),
+
+  totale:Number(total.toFixed(2)),
+  stato:"nuovo",
+
+  createdAt:firebase.firestore.FieldValue.serverTimestamp()
+ };
+
+ button.disabled=true;
+ message.textContent="Invio ordine in corso...";
+
+ try{
+
+  // Salvataggio su Firebase
+  await db.collection("ordini").add(order);
+
+  // Svuota carrello
+  cart=[];
+  renderCart();
+
+  tableInput.value="";
+  document.getElementById("customer-name").value="";
+
+  message.textContent="Ordine inviato correttamente!";
+
+  showToast("Ordine inviato correttamente!");
+
+ }catch(error){
+
+  console.error("Errore invio ordine:",error);
+
+  message.textContent=
+   "Non è stato possibile inviare l'ordine. Controlla la connessione o le regole Firestore.";
+
+ }finally{
+
+  button.disabled=false;
+ }
+});
+
+// AVVIO CARRELLO
+renderCart();
+
 </script>
 </body>
 </html>
